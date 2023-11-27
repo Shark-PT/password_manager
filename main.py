@@ -1,18 +1,25 @@
 from tkinter import *
+from tkinter import messagebox
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+
 def save():
-    website= website_entry.get()
+    website = website_entry.get()
     email = email_entry.get()
     password = password_input.get()
-    with open("data.txt", "a") as data:
-        data.write(f"{website} | {email} | {password}\n")
-        website_entry.delete(0, END)
-        email_entry.delete(0, END)
-        password_input.delete(0, END)
+
+    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \n Email: {email} \nPassword:"
+                                                  f"{password} \nIs it ok to save?")
+
+    if is_ok:
+        with open("data.txt", "a") as data:
+            data.write(f"{website} | {email} | {password}\n")
+            website_entry.delete(0, END)
+            email_entry.delete(0, END)
+            password_input.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -40,7 +47,7 @@ website_entry.focus()
 
 email_entry = Entry(width=35)
 email_entry.grid(row=2, column=1, columnspan=2, sticky="EW")
-email_entry.insert(0, "jccreis@gmail.com")
+email_entry.insert(0, "username@e-mail.com")
 
 password_input = Entry(width=21)
 password_input.grid(row=3, column=1, sticky="EW")
