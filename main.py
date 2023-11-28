@@ -11,6 +11,19 @@ def save():
     email = email_entry.get()
     password = password_input.get()
 
+<<<<<<< HEAD
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title="error", message="Please don't leave any fields empty")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \n Email: {email} \nPassword:"
+                                                  f"{password} \nIs it ok to save?")
+        if is_ok:
+            with open("data.txt", "a") as data:
+                data.write(f"{website} | {email} | {password}\n")
+                website_entry.delete(0, END)
+                email_entry.delete(0, END)
+                password_input.delete(0, END)
+=======
     is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \n Email: {email} \nPassword:"
                                                   f"{password} \nIs it ok to save?")
 
@@ -20,6 +33,7 @@ def save():
             website_entry.delete(0, END)
             email_entry.delete(0, END)
             password_input.delete(0, END)
+>>>>>>> e65cb96002b22a5dc06d22f62f9252b1e224c490
 
 # ---------------------------- UI SETUP ------------------------------- #
 
